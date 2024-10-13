@@ -1,0 +1,17 @@
+loud-speaker:
+  item:
+    material: PAPER
+    display-name: "&f확성기"
+    lore:
+      - "&7손에 아이템을 들고 &a'/확성기 [내용]'&7을 입력해주세요."
+    custom-model-data: 0
+
+  # %player% = 유저 이름
+  # %player_display% = 유저 디스플레이 이름
+  # %message% = 메시지
+  messages:
+    - "&6[ %player%님의 확성기 ] &f%message%"
+
+message:
+  hold-loud-speaker: "&c손에 확성기를 들어주세요."
+  input-message: "&c메시지를 입력해주세요."
