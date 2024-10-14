@@ -1,11 +1,11 @@
 package kr.cosine.loudspeaker.service
 
+import kr.cosine.loudspeaker.netty.packet.LoudSpeakerPacket
 import kr.cosine.loudspeaker.registry.SettingRegistry
 import kr.hqservice.framework.bukkit.core.netty.server.ProxiedNettyServer
 import kr.hqservice.framework.global.core.component.Service
 import kr.hqservice.framework.netty.api.NettyServer
 import kr.hqservice.framework.netty.api.PacketSender
-import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Server
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -29,7 +29,8 @@ class LoudSpeakerService(
                 .replace("%message%", message)
         }.joinToString("\n")
         if (nettyServer is ProxiedNettyServer) {
-            packetSender.broadcast(loudSpeakerMessages.run(::TextComponent), false)
+            val loudSpeakerPacket = LoudSpeakerPacket(loudSpeakerMessages)
+            packetSender.sendPacketAll(loudSpeakerPacket)
         } else {
             server.broadcastMessage(loudSpeakerMessages)
         }
