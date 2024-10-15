@@ -23,17 +23,23 @@ class LoudSpeakerService(
 
     fun useLoudSpeaker(player: Player, itemStack: ItemStack, message: String) {
         itemStack.amount--
-        val loudSpeakerMessages = settingRegistry.getLoudSpeakerMessages {
-            it.replace("%player%", player.name)
-                .replace("%player_display%", player.displayName)
-                .replace("%message%", message)
-        }.joinToString("\n")
+        val playerName = player.name
+        val playerDisplayName = player.displayName
         if (nettyServer is ProxiedNettyServer) {
-            val loudSpeakerPacket = LoudSpeakerPacket(loudSpeakerMessages)
+            val loudSpeakerPacket = LoudSpeakerPacket(playerName, playerDisplayName, message)
             packetSender.sendPacketAll(loudSpeakerPacket)
         } else {
-            server.broadcastMessage(loudSpeakerMessages)
+            broadcast(playerName, playerDisplayName, message)
         }
+    }
+
+    fun broadcast(playerName: String, playerDisplayName: String, message: String) {
+        val loudSpeakerMessages = settingRegistry.getLoudSpeakerMessages {
+            it.replace("%player%", playerName)
+                .replace("%player_display%", playerDisplayName)
+                .replace("%message%", message)
+        }.joinToString("\n")
+        server.broadcastMessage(loudSpeakerMessages)
     }
 
     fun giveLoudSpeaker(player: Player): Boolean {

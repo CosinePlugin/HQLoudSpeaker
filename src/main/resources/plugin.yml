@@ -1,6 +1,6 @@
 name: HQLoudSpeaker
 main: kr.cosine.loudspeaker.HQLoudSpeaker
-version: 1.1.0
+version: 1.1.1
 api-version: 1.17
 author: Cosine_A
 depend:

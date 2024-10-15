@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "kr.cosine.loudspeaker"
-version = "1.1.0"
+version = "1.1.1"
 
 repositories {
     maven("https://maven.hqservice.kr/repository/maven-public")
