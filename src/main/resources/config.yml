@@ -1,4 +1,7 @@
 loud-speaker:
+  # 확성기 쿨타임 (초 단위)
+  cooldown: 60
+
   item:
     material: PAPER
     display-name: "&f확성기"
@@ -15,3 +18,5 @@ loud-speaker:
 message:
   hold-loud-speaker: "&c손에 확성기를 들어주세요."
   input-message: "&c메시지를 입력해주세요."
+  # %cooldown% = 남은 쿨타임
+  applied-cooldown: "&c%cooldown%초 후에 다시 사용할 수 있습니다."

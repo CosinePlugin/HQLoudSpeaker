@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "kr.cosine.loudspeaker"
-version = "1.1.1"
+version = "1.2.0"
 
 repositories {
     maven("https://maven.hqservice.kr/repository/maven-public")
@@ -25,6 +25,10 @@ dependencies {
         exclude("io.papermc.paper")
     }
     compileOnly("kr.hqservice", "hqframework-bukkit-nms", "1.0.2-SNAPSHOT") {
+        exclude("org.spigotmc")
+        exclude("io.papermc.paper")
+    }
+    compileOnly("kr.hqservice", "hqframework-bukkit-database", "1.0.2-SNAPSHOT") {
         exclude("org.spigotmc")
         exclude("io.papermc.paper")
     }

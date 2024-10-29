@@ -15,6 +15,8 @@ class SettingConfig(
     private val config: HQYamlConfiguration,
     private val settingRegistry: SettingRegistry
 ) {
+    val loudSpeakerCooldown get() = config.getLong("loud-speaker.cooldown") * 1000
+
     fun load() {
         loadLoudSpeaker()
         loadMessage()
